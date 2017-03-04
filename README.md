@@ -37,7 +37,8 @@ The quick and dirty instructions are
 
 Selecting the board
 --------------
-Once the Sanguino board is isntalled, Click on Tools > Board > and select Sanguino (should be at the bottom, might need to scroll down).
+Once the Sanguino board is isntalled, Click on Tools > Board > and select "Sanguino" (should be at the bottom, might need to scroll down).
+Click on Tools > Processor and select "ATmega1284 or ATmega1284P (16MHz)"
 
 Initial upload to the board
 --------------
