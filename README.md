@@ -39,14 +39,17 @@ Selecting the board
 --------------
 Once the Sanguino board is isntalled, Click on Tools > Board > and select "Sanguino" (should be at the bottom, might need to scroll down).
 Click on Tools > Processor and select "ATmega1284 or ATmega1284P (16MHz)"
+If the board is plugged in via USB, select the Port. Tools > Port.
 
 Initial upload to the board
 --------------
+May need to unlock the chip first to write. (checking)
 The first upload may need to have a seperate ISP programmer. This can be done with any ISP programmer that can write to ATMEGA chips. (AVR ISP mkII, Arduino as ISP, etc)
 
 I keep getting a stk500_getsync() error!
 --------------
 You may need to make a change to a file to fix this.
+**DO NOT MAKE THIS CHANGE UNLESS YOU ARE GETTING THIS PROBLEM!**
 In a windows 7/8/10 environment, this is under your AppData/Local path.
 You can open this by clicking on start and typing in %LOCALAPPDATA% followed by <enter>. This will open a window. From here, open the following folders:
 Arduino15 > Packages > Sanguino > hardware > avr > 1.0.2. Copy the "boards.txt" to a new file, such as "old_boards.txt".
@@ -97,6 +100,8 @@ D7  - pb7 - transistor gate for connector "G" // Extruder 0
 D18 - pc2 - x end stop
 D19 - pc3 - y end stop
 D20 - pc4 - z end stop
+D14 - PD6 - X,Y,E enable
+D26/A5 - PA5 - Z enable
 ```
 
 And finally, I would like to thank the 101hero team for making this cheap 3D printer that enabled a large number of people to get togeather and hack the crap out of it to make it better!
