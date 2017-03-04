@@ -66,6 +66,7 @@ I did have to guess on a few settings (below), which may need to be tweaked or c
 
 Guessed Settings
 --------------
+```
 #define TEMP_SENSOR_0 1
 #define DELTA_DIAGONAL_ROD 142.5
 #define DELTA_SMOOTH_ROD_OFFSET 115.0
@@ -73,6 +74,7 @@ Guessed Settings
 #define DELTA_CARRIAGE_OFFSET 15.0
 #define DELTA_PRINTABLE_RADIUS 50.0
 #define HOMING_FEEDRATE_Z  (15*60)
+```
 
 Thanks
 ==============
