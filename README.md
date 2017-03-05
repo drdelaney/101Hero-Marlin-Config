@@ -75,6 +75,10 @@ Guessed Settings
 #define DELTA_PRINTABLE_RADIUS 50.0
 #define HOMING_FEEDRATE_Z  (15*60)
 ```
+Printing
+==============
+It should be noted that this firmware will NOT automatically print files named "101hero" on the SD card.
+If you do not have an LCD screen, you can instead use the filename "auto0.g". This file will work exactly the same as the "101hero" file.
 
 Thanks
 ==============
