@@ -43,8 +43,32 @@ If the board is plugged in via USB, select the Port. Tools > Port.
 
 Initial upload to the board
 --------------
-May need to unlock the chip first to write. (checking)
-The first upload may need to have a seperate ISP programmer. This can be done with any ISP programmer that can write to ATMEGA chips. (AVR ISP mkII, Arduino as ISP, etc)
+You will need to unlock or reflash the chip to unlock the board.
+This needs to be done with a seperate ISP programmer.
+You can make a custom one with another arduino chip (Aruidno as ISP). Or you can use a hardware programmer, such as a USBasp or AVRISP.
+The only caviot needed is it needs to support writing to large chips such as an ATMEGA.
+
+Plug in the ISP programmer to the 6 pin ISP header (where the SD card plugs in. the top right pin is pin #1).
+Within the Arduino IDE, choose Tools > Programmer > and select your programmer.
+Plug in the ISP programmer and the LED for the 101hero board should come on.
+Click on Tools > Burn bootloader.  Cross your fingers and pray.
+
+If there are no errors, congratulations, you just erased your 101hero. Its broken peice of hardware...JK you will get to flash the firmware back on it in a minute!
+
+From this point onward, you can unplug the ISP and plug the 101hero directly into your PC and program it using the Arduino IDE's upload function.
+
+Reflashing the board
+--------------
+Download the correct Marlin version. As of 3/6/2017, this configuration is known to work for [Marlin 1.1.0rc8-BugFix] (https://github.com/MarlinFirmware/Marlin/tree/RCBugFix).
+Later on, this should just be any 1.1.x version.
+Copy the Configuration.h and Configuration_adv.h to the Marlin folder, and load Marlin.ino into the Arduino IDE.
+
+Disconnect and close any software which may be using the serial interface (such as the printer control application you are using) except the Ardino IDE.
+Follow the information above on selecting the board.
+Choose the correct USB port.
+
+Click Upload, and wait.  If no errors, you should not have a new firmware on the board.
+If you have an LCD screen attached, you will also see it come to life with text.
 
 I keep getting a stk500_getsync() error!
 --------------
@@ -109,5 +133,26 @@ D20 - pc4 - z end stop
 D14 - PD6 - X,Y,E enable
 D26/A5 - PA5 - Z enable
 ```
+As a side note, it seems that something is weird with the mapping of Connectors E and G. When testing, these pins did NOT work as expected. However a standard pinout for the Sanguinolou 1.2 does in fact work.
 
 And finally, I would like to thank the 101hero team for making this cheap 3D printer that enabled a large number of people to get togeather and hack the crap out of it to make it better!
+
+Known Problems
+==============
+- If you cannot get your ISP to erase the 101hero board, double check your wiring and make sure it can support writig to an ATMEGA chip. TinyISP programmers to **NOT** work on ATMEGA chips!
+- When the printer is first booted, it may display garbled text on the screen. This might be a firmware issue.  Simply click on the button and go back and it should now display correctly.
+- If using an LCD, the reset button nor does the beeper NOT work. This is a limitation from the Sanguinolou board.
+
+Other
+==============
+- But I want to run a RAMPS board!
+If using the stock steppers, heat core and the like, simply change your motherboard type!
+```
+#define MOTHERBOARD BOARD_RAMPS_14_EFB
+```
+Also you may need to make sure your stepper drivers are set within a good range. My drivers were ranging (stock from 101hero) between 0.84v to 0.97v.
+To check the voltage. Take a multimeter to any GND point and **VERY CAREFULLY** touch the metal screw terminal on near the stepper drivers with the POS lead. Make sure your multimeter is at the correct setting.
+
+- What ISP did you use?
+A cheap USBasp programmer from Amazon. [Something like this should help] (https://www.amazon.com/USBasp-Programming-Quadcopter-Atomic-Market/dp/B00V42E8JC)
+
