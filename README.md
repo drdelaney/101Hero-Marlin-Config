@@ -1,22 +1,22 @@
 # 101Hero-Marlin-Config
 Marlin 1.1.0rc8 Config files for the 101Hero
 
-Notice
-==============
+# Notice
+
 While I did my best to create this, I will warn you that you should use this at your own risk.
 The pinouts were mapped by someon other then myself (see thanks below) and I cannot guarantee that they are correct.
 Using this config and related Marlin modifications may cause irreparable damage to you or your printer or harm to yourself.
 
-Uploading the board
-==============
+# Uploading the board
 
-Arduino Software
---------------
+
+## Arduino Software
+
 You will need to use the arduino software from https://www.arduino.cc.
 This has been tested with 1.6.13, but may work with other 1.6.x or 1.8.x packages.
 
-Addon Software
---------------
+## Addon Software
+
 Once the Arduino IDE is installed, you will want to add the Sanguino board libraries.
 You can review the instructions at [https://dustsreprap.blogspot.com/2015/06/better-way-to-install-sanguino-in.html] (https://dustsreprap.blogspot.com/2015/06/better-way-to-install-sanguino-in.html)
 
@@ -35,14 +35,14 @@ The quick and dirty instructions are
 
 **NOTE:** You may need to make a change to a file before restarting the Arduino ISP.  See below for the  stk500_getsync() error.
 
-Selecting the board
---------------
+## Selecting the board
+
 Once the Sanguino board is isntalled, Click on Tools > Board > and select "Sanguino" (should be at the bottom, might need to scroll down).
 Click on Tools > Processor and select "ATmega1284 or ATmega1284P (16MHz)"
 If the board is plugged in via USB, select the Port. Tools > Port.
 
-Initial upload to the board
---------------
+## Initial upload to the board
+
 You will need to unlock or reflash the chip to unlock the board.
 This needs to be done with a seperate ISP programmer.
 You can make a custom one with another arduino chip (Aruidno as ISP). Or you can use a hardware programmer, such as a USBasp or AVRISP.
@@ -57,8 +57,8 @@ If there are no errors, congratulations, you just erased your 101hero. Its broke
 
 From this point onward, you can unplug the ISP and plug the 101hero directly into your PC and program it using the Arduino IDE's upload function.
 
-Reflashing the board
---------------
+## Reflashing the board
+
 Download the correct Marlin version. As of 3/6/2017, this configuration is known to work for [Marlin 1.1.0rc8-BugFix] (https://github.com/MarlinFirmware/Marlin/tree/RCBugFix).
 Later on, this should just be any 1.1.x version.
 Copy the Configuration.h and Configuration_adv.h to the Marlin folder, and load Marlin.ino into the Arduino IDE.
@@ -70,8 +70,8 @@ Choose the correct USB port.
 Click Upload, and wait.  If no errors, you should not have a new firmware on the board.
 If you have an LCD screen attached, you will also see it come to life with text.
 
-I keep getting a stk500_getsync() error!
---------------
+## I keep getting a stk500_getsync() error!
+
 You may need to make a change to a file to fix this.
 **DO NOT MAKE THIS CHANGE UNLESS YOU ARE GETTING THIS PROBLEM!**
 In a windows 7/8/10 environment, this is under your AppData/Local path.
@@ -81,15 +81,15 @@ Edit boards.txt with a text editor which supports UNIX line breaks (VIM/gVIM/Not
 Look for a line containing: sanguino.menu.cpu.atmega1284p.upload.speed
 and change the value from 115200 or 57600. Save the file, and restart the Arduino IDE. Try the upload again.
 
-Making changes to the confiuration
-==============
+# Making changes to the confiuration
+
 Feel free to make changes to the configuration as suited for your needs.
 Most of the values came from either a stock delta configuration or the original 101Heros configuration, using an attached LCD screen.
 
 I did have to guess on a few settings (below), which may need to be tweaked or changed.
 
-Guessed Settings
---------------
+## Guessed Settings
+
 ```
 #define TEMP_SENSOR_0 1
 #define DELTA_DIAGONAL_ROD 142.5
@@ -99,13 +99,13 @@ Guessed Settings
 #define DELTA_PRINTABLE_RADIUS 50.0
 #define HOMING_FEEDRATE_Z  (15*60)
 ```
-Printing
-==============
+# Printing
+
 It should be noted that this firmware will NOT automatically print files named "101hero" on the SD card.
 If you do not have an LCD screen, you can instead use the filename "auto0.g". This file will work exactly the same as the "101hero" file.
 
-Thanks
-==============
+# Thanks
+
 I would like to mention and thank all the people at user101.com for work on looking at and figuring out some variables for the marlin configuration.
 While I measured pretty close to the values they are using, I ended up using the values that workshoptinkerers listed.
 Granted I was using these settigns for my RAMPS 1.4 board, they moved over to the 101hero board with no issues.
@@ -137,15 +137,16 @@ As a side note, it seems that something is weird with the mapping of Connectors 
 
 And finally, I would like to thank the 101hero team for making this cheap 3D printer that enabled a large number of people to get togeather and hack the crap out of it to make it better!
 
-Known Problems
-==============
+# Known Problems
+
 - If you cannot get your ISP to erase the 101hero board, double check your wiring and make sure it can support writig to an ATMEGA chip. TinyISP programmers to **NOT** work on ATMEGA chips!
 - When the printer is first booted, it may display garbled text on the screen. This might be a firmware issue.  Simply click on the button and go back and it should now display correctly.
 - If using an LCD, the reset button nor does the beeper NOT work. This is a limitation from the Sanguinolou board.
 
-Other
-==============
-- But I want to run a RAMPS board!
+# Other
+
+### But I want to run a RAMPS board!
+
 If using the stock steppers, heat core and the like, simply change your motherboard type!
 ```
 #define MOTHERBOARD BOARD_RAMPS_14_EFB
@@ -153,6 +154,6 @@ If using the stock steppers, heat core and the like, simply change your motherbo
 Also you may need to make sure your stepper drivers are set within a good range. My drivers were ranging (stock from 101hero) between 0.84v to 0.97v.
 To check the voltage. Take a multimeter to any GND point and **VERY CAREFULLY** touch the metal screw terminal on near the stepper drivers with the POS lead. Make sure your multimeter is at the correct setting.
 
-- What ISP did you use?
+### What ISP did you use?
 A cheap USBasp programmer from Amazon. [Something like this should help] (https://www.amazon.com/USBasp-Programming-Quadcopter-Atomic-Market/dp/B00V42E8JC)
 
