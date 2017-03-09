@@ -156,4 +156,5 @@ To check the voltage. Take a multimeter to any GND point and **VERY CAREFULLY** 
 
 ### What ISP did you use?
 A cheap USBasp programmer from Amazon. [Something like this should help] (https://www.amazon.com/USBasp-Programming-Quadcopter-Atomic-Market/dp/B00V42E8JC)
-
+I was also abot to get a AVRISP mkII working. [I used this one from amazon] (https://www.amazon.com/gp/product/B00C7VV6E4/). NOTE: you will need to install the libusb drivers for this in windows!.
+I was also able to get an Arduino as ISP working. The simplest way to wire this up is take a 6 pin heater from the Arduino UNO ISCP pins to the 101hero ISCP pins, but move ISCP pin 5 on the UNO side to PIn 10. (This is a decent image for the wiring)[https://i.stack.imgur.com/XQHMD.jpg]
