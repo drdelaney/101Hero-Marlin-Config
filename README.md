@@ -59,9 +59,11 @@ From this point onward, you can unplug the ISP and plug the 101hero directly int
 
 ## Reflashing the board
 
-Download the correct Marlin version. As of 3/6/2017, this configuration is known to work for [Marlin 1.1.0rc8-BugFix] (https://github.com/MarlinFirmware/Marlin/tree/RCBugFix).
+Download the correct Marlin version. As of 3/23/2017, this configuration is known to work for [Marlin 1.1.0rc8-BugFix] (https://github.com/MarlinFirmware/Marlin/tree/RCBugFix).
 Later on, this should just be any 1.1.x version.
-Copy the Configuration.h and Configuration_adv.h to the Marlin folder, and load Marlin.ino into the Arduino IDE.
+Copy the Configuration.h and Configuration_adv.h to the Marlin folder, and load Marlin.ino into the Arduino IDE. This can be done by viewing the file with the "raw" option, then right click, and save-as.  Choose a location. Make sure "type" is set to "All Files".  Finally move the files into the Marlin folder, overwriting the existing files.
+
+Open the Marlin.ino file with the Arduino software.
 
 Disconnect and close any software which may be using the serial interface (such as the printer control application you are using) except the Ardino IDE.
 Follow the information above on selecting the board.
@@ -81,7 +83,7 @@ Edit boards.txt with a text editor which supports UNIX line breaks (VIM/gVIM/Not
 Look for a line containing: sanguino.menu.cpu.atmega1284p.upload.speed
 and change the value from 115200 or 57600. Save the file, and restart the Arduino IDE. Try the upload again.
 
-# Making changes to the confiuration
+# Making changes to the configuration
 
 Feel free to make changes to the configuration as suited for your needs.
 Most of the values came from either a stock delta configuration or the original 101Heros configuration, using an attached LCD screen.
