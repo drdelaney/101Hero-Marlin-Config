@@ -1,5 +1,5 @@
 # 101Hero-Marlin-Config
-Marlin 1.1.0rc8 Config files for the 101Hero
+Marlin 1.1.3 Config files for the 101Hero
 
 # Notice
 
@@ -59,8 +59,7 @@ From this point onward, you can unplug the ISP and plug the 101hero directly int
 
 ## Reflashing the board
 
-Download the correct Marlin version. As of 3/23/2017, this configuration is known to work for [Marlin 1.1.0rc8-BugFix] (https://github.com/MarlinFirmware/Marlin/tree/RCBugFix).
-Later on, this should just be any 1.1.x version.
+Download the correct Marlin version. As of 6/11/2017, this configuration is known to work for [Marlin 1.1.3] (https://github.com/MarlinFirmware/Marlin/tree/1.1.x).
 Copy the Configuration.h and Configuration_adv.h to the Marlin folder, and load Marlin.ino into the Arduino IDE. This can be done by viewing the file with the "raw" option, then right click, and save-as.  Choose a location. Make sure "type" is set to "All Files".  Finally move the files into the Marlin folder, overwriting the existing files.
 
 Open the Marlin.ino file with the Arduino software.
