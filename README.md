@@ -1,6 +1,22 @@
 # 101Hero-Marlin-Config
 Marlin Config files for the 101Hero
 
+# Special Notes
+
+## Marlin 1.1.8
+It seems there may be a problem with the planner code and it may be destructive for delta printers.
+the fix is to either use bugfix-1.1.x, any release after 1.1.8, or to patch the file manually.
+
+Edit Marlin_main.cpp with a text editor (such as VIM or Notepad++)
+And change the following line
+```
+planner.buffer_line(delta[A_AXIS], delta[B_AXIS], raw[Z_AXIS], raw[E_AXIS], _feedrate_mm_s, active_extruder);
+```
+to
+```
+planner.buffer_line(delta[A_AXIS], delta[B_AXIS], delta[C_AXIS], raw[E_AXIS], _feedrate_mm_s, active_extruder);
+```
+
 # Notice
 
 While I did my best to create this, I will warn you that you should use this at your own risk.
