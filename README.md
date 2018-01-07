@@ -1,5 +1,5 @@
 # 101Hero-Marlin-Config
-Marlin 1.1.3 Config files for the 101Hero
+Marlin Config files for the 101Hero
 
 # Notice
 
@@ -7,13 +7,16 @@ While I did my best to create this, I will warn you that you should use this at 
 The pinouts were mapped by someon other then myself (see thanks below) and I cannot guarantee that they are correct.
 Using this config and related Marlin modifications may cause irreparable damage to you or your printer or harm to yourself.
 
+It should also be noted that I do not always test the updated configuration files on the printer.
+Though I do verify that they can be uploaded to the stock 101hero board.
+
 # Uploading the board
 
 
 ## Arduino Software
 
 You will need to use the arduino software from https://www.arduino.cc.
-This has been tested with 1.6.13, but may work with other 1.6.x or 1.8.x packages.
+This has been tested with 1.6.13 and 1.8.1, but may work with other 1.6.x or 1.8.x packages.
 
 ## Addon Software
 
@@ -59,7 +62,9 @@ From this point onward, you can unplug the ISP and plug the 101hero directly int
 
 ## Reflashing the board
 
-Download the correct Marlin version. As of 6/11/2017, this configuration is known to work for [Marlin 1.1.3] (https://github.com/MarlinFirmware/Marlin/tree/1.1.x).
+Download the correct Marlin version. This configuration is known to work for [Marlin 1.1.x] (https://github.com/MarlinFirmware/Marlin/tree/1.1.x).
+Locate a version of the configuration file you wish to use. I am making the configuration files as xyz_Configuration.h and xyz_Configuration_adv.h. Where xyz is, this is the version that the configuration is for.
+For instance, 113_Configuration.h is for Marlin 1.1.3, and may not work with other versions. Do NOT mix the standard and adv configuration file versions. Once you have selected the version you need, rename it to be simply Configuration.h and Configuration_adv.h.
 Copy the Configuration.h and Configuration_adv.h to the Marlin folder, and load Marlin.ino into the Arduino IDE. This can be done by viewing the file with the "raw" option, then right click, and save-as.  Choose a location. Make sure "type" is set to "All Files".  Finally move the files into the Marlin folder, overwriting the existing files.
 
 Open the Marlin.ino file with the Arduino software.
@@ -116,6 +121,8 @@ I would also like to thank Gábor Héja from the 101 Hero (Unofficial) facebook gr
 Without his help, I would not have been able to take the pin mappings he found and map them to the arduino pins.
 [I used this image for the conversion] (http://openhardware.ro/wp-content/uploads/ATmega1284_Arduino_Pinout.jpg)
 
+Join myseld and other hackers on the [facebook group] (https://www.facebook.com/groups/101herounofficial/) if you have any questions.
+
 The mappings he found, with my changes are as follows:
 ```
 D21 - pc5 - x dir
@@ -141,7 +148,7 @@ And finally, I would like to thank the 101hero team for making this cheap 3D pri
 # Known Problems
 
 - If you cannot get your ISP to erase the 101hero board, double check your wiring and make sure it can support writig to an ATMEGA chip. TinyISP programmers to **NOT** work on ATMEGA chips!
-- When the printer is first booted, it may display garbled text on the screen. This might be a firmware issue.  Simply click on the button and go back and it should now display correctly.
+- When the printer is first booted, it may display garbled text on the screen. This might be a firmware issue.  Simply click on the button and go back and it should now display correctly. You may also wish to add some aluminum foil wrapping the wires of the LCD (just make sure they dont touch anything else that could short out the board).
 - If using an LCD, the reset button nor does the beeper NOT work. This is a limitation from the Sanguinolou board.
 
 # Other
