@@ -1,2 +1,4 @@
 *~
-.README.md.swp
+*.swp
+Configuration.h
+Configuration_adv.h
