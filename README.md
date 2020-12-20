@@ -3,7 +3,12 @@ Marlin Config files for the 101Hero
 
 # Special Notes
 
-## Marlin 1.1.8
+## Marlin 2.0.x with Sanguinololu
+Due to what appears to be some issues between the Sanguinololu boards, the LCD drivers, and possibly Marlin code, it may not be possible to compile Marlin 2.0.x for the stock board. Use a board based on ATMEGA2560 or better.
+The provided Marlin 2.0.x config is for a RAMPS 1.4 board.
+There also appears to be issues compiling the firmware with Marlin 2.0.x within the Arduino IDE, and it us suggested to switch to a PlatformIO compiler.
+
+## Marlin 1.1.8 and dela planner code
 It seems there may be a problem with the planner code and it may be destructive for delta printers.
 the fix is to either use bugfix-1.1.x, any release after 1.1.8, or to patch the file manually.
 
@@ -28,13 +33,20 @@ Though I do verify that they can be uploaded to the stock 101hero board.
 
 # Uploading the board
 
+## PlatformIO
+PlatformIO is the suggested build environment for Marlin 2.0 with 8 and 32 bit boards.
+You can find more information about it at [https://marlinfw.org/docs/basics/install_platformio.html] (https://marlinfw.org/docs/basics/install_platformio.html).
+You can also use the auto build plugin found at  [https://marlinfw.org/docs/basics/auto_build_marlin.html] (https://marlinfw.org/docs/basics/auto_build_marlin.html)
+
+One of the neat things is that this will download all extra modules needed for the Marlin firmwre to run.
 
 ## Arduino Software
 
 You will need to use the arduino software from https://www.arduino.cc.
-This has been tested with 1.6.13 and 1.8.1, but may work with other 1.6.x or 1.8.x packages.
+This has been tested with 1.6.13 and 1.8.1, 1.8.8, 1.8.13 but may work with other 1.6.x or 1.8.x packages.
+Make sure to keep the build path short (IE do not leave on desktop or program files) if using the Arduino software.
 
-## Addon Software
+### Addon Arduino Software
 
 Once the Arduino IDE is installed, you will want to add the Sanguino board libraries.
 You can review the instructions at [https://dustsreprap.blogspot.com/2015/06/better-way-to-install-sanguino-in.html] (https://dustsreprap.blogspot.com/2015/06/better-way-to-install-sanguino-in.html)
@@ -54,7 +66,8 @@ The quick and dirty instructions are
 
 **NOTE:** You may need to make a change to a file before restarting the Arduino ISP.  See below for the  stk500_getsync() error.
 
-## Selecting the board
+
+### Selecting the board
 
 Once the Sanguino board is isntalled, Click on Tools > Board > and select "Sanguino" (should be at the bottom, might need to scroll down).
 Click on Tools > Processor and select "ATmega1284 or ATmega1284P (16MHz)"
@@ -78,7 +91,7 @@ From this point onward, you can unplug the ISP and plug the 101hero directly int
 
 ## Reflashing the board
 
-Download the correct Marlin version. This configuration is known to work for [Marlin 1.1.x] (https://github.com/MarlinFirmware/Marlin/tree/1.1.x).
+Download the correct Marlin version for the configuration you want to use. This configuration is known to work for [Marlin 1.1.x] (https://github.com/MarlinFirmware/Marlin/tree/1.1.x) as well as [Marlin 2.0.x] (https://github.com/MarlinFirmware/Marlin/tree/2.0.x).
 Locate a version of the configuration file you wish to use. I am making the configuration files as xyz_Configuration.h and xyz_Configuration_adv.h. Where xyz is, this is the version that the configuration is for.
 For instance, 113_Configuration.h is for Marlin 1.1.3, and may not work with other versions. Do NOT mix the standard and adv configuration file versions. Once you have selected the version you need, rename it to be simply Configuration.h and Configuration_adv.h.
 Copy the Configuration.h and Configuration_adv.h to the Marlin folder, and load Marlin.ino into the Arduino IDE. This can be done by viewing the file with the "raw" option, then right click, and save-as.  Choose a location. Make sure "type" is set to "All Files".  Finally move the files into the Marlin folder, overwriting the existing files.
@@ -92,7 +105,7 @@ Choose the correct USB port.
 Click Upload, and wait.  If no errors, you should not have a new firmware on the board.
 If you have an LCD screen attached, you will also see it come to life with text.
 
-## I keep getting a stk500_getsync() error!
+### I keep getting a stk500_getsync() error!
 
 You may need to make a change to a file to fix this.
 **DO NOT MAKE THIS CHANGE UNLESS YOU ARE GETTING THIS PROBLEM!**
